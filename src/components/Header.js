@@ -4,31 +4,18 @@ import {AiOutlineSetting} from 'react-icons/ai';
 import {VscGraph} from 'react-icons/vsc';
 import {MdOutlineDoneOutline} from 'react-icons/md';
 
-const Header=()=>{
+const Header=({countDownColor})=>{
     return(
         <>
-        <div className='flex justify-between  h-12 w-[620px] py-2'>
-    
-                {/* <div className='flex justify-between items-center w-20 text-white'>
-                    <a href="#">
-                    <MdOutlineDoneOutline/>
-                    </a>
-                    <span>PromoFocus</span>
-                    
-                </div> */}
-                <button className='flex items-center text-white '><MdOutlineDoneOutline/>PromoFocus</button>
-                <ul className='flex justify-between space-x-6 text-white'>
-                    {/* <li className='flex bg-red-200 items-center  text-white rounded'><VscGraph/><span className='hidden md:inline'>report</span></li>
-                    <li className=' flex bg-red-200 items-center text-white rounde'><AiOutlineSetting/><span className='hidden md:inline'>setting</span></li>
-                    <li className='flex bg-red-200 items-center text-white rounded'><FaRegUserCircle/><span className='hidden md:inline'>login</span></li> */}
-                    <button className='flex items-center bg-[#E17773] rounded   p-4'><VscGraph/><span className='hidden md:inline'>report</span></button>
-                    <button className='flex items-center bg-[#E17773] rounded  p-4'><AiOutlineSetting/><span className='hidden md:inline'>setting</span></button>
-                    <button className='flex items-center bg-[#E17773] rounded  p-4'><FaRegUserCircle/><span className='hidden md:inline'>login</span></button>
-                </ul>
-                
-        </div>
-        <hr className='bg-red-900 h-1 w-[50%]'/>
-        </>
+            <div className='flex justify-between items-center w-full h-14 px-2 text-white '>
+                <a href="#" className='flex justify-between items-center text-xl'><MdOutlineDoneOutline/><span>Pomodoro</span></a>
+                <span className='flex justify-around w-32'>
+                    <button className={`flex justify-between items-center w-9 h-9 p-2 rounded `} style={{backgroundColor:`${countDownColor}`}}><VscGraph className='h-6 w-6'/><span className='hidden'>report</span></button>
+                    <button className={`flex justify-between items-center w-9 h-9 p-2 rounded `} style={{backgroundColor:`${countDownColor}`}}><AiOutlineSetting className='h-6 w-6'/><span className='hidden'>setting</span></button>
+                    <button className={`flex justify-between items-center w-9 h-9 p-2 rounded `} style={{backgroundColor:`${countDownColor}`}}><FaRegUserCircle className='h-6 w-6'/><span className='hidden'>login</span></button>
+                </span>
+           </div>       
+         </>
     )
 }
 export default Header
