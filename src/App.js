@@ -5,7 +5,6 @@ import Task from './components/Task';
 import { createContext, useContext, useState } from 'react';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import Login from './components/Login';
-const UserContext=createContext();
 function App() {
   const [countDownColor,setCountDownColor]=useState('#DD6662');
   const [bgColor,setBgColor]=useState('#D95550');
@@ -14,7 +13,8 @@ function App() {
   const [focusColor, setFocusColor] = useState('#BC5753');
   const [currentPomodoros,setCurrentPomodoros]=useState(0)
   return (
-    <UserContext.Provider value={isAuth}>
+    <>
+
       <div className={`flex flex-col`} style={{backgroundColor:`${bgColor}`}}>
         <div className=''>
           <Header countDownColor={countDownColor}/>
@@ -35,7 +35,7 @@ function App() {
         </div>
       </div>
      
-      </UserContext.Provider>
+    </>
   );
 }
 
