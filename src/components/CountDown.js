@@ -1,12 +1,14 @@
 import React, { Component, useEffect, useState } from 'react';
 import { IoPlaySkipForwardOutline } from 'react-icons/io5';
 
-const CountDown = ({bgColor, setBgColor, countDownColor,  setCountDownColor,countpmodoro,setCountpmodoro,setFocusOrBreak,focusColor,setFocusColor}) => {
+const CountDown = ({bgColor, setBgColor, countDownColor,  setCountDownColor,countpmodoro,setCountpmodoro,setFocusOrBreak,focusColor,setFocusColor,currentPomodoros,setCurrentPomodoros}) => {
   
-  const [type, setType] = useState('Pomodoro');
+  // const [type, setType] = useState('Pomodoro');
   const [modalstate, setModalstate] = useState(false);
   const [textColor, setTextColor] = useState('text-txt-pomodoro-red');
-  
+  const [seconds, setSeconds] = useState(6)
+  const [minutes, setMinutes] = useState(0)
+  const [timer, setTimer] = useState(false)
 
   const setColor = (countColor, backgroundColor,txtColor,focus) => {
     setCountDownColor(countColor);
@@ -18,9 +20,7 @@ const CountDown = ({bgColor, setBgColor, countDownColor,  setCountDownColor,coun
 
 
 
-  const [seconds, setSeconds] = useState(6)
-  const [minutes, setMinutes] = useState(0)
-  const [timer, setTimer] = useState(false)
+  
 
   const Min = minutes > 9 ? minutes : '0' + minutes
   const Sec = seconds > 9 ? seconds : '0' + seconds
@@ -30,39 +30,39 @@ const CountDown = ({bgColor, setBgColor, countDownColor,  setCountDownColor,coun
     startSound();
     setTimer(!timer);
   }
-  useEffect(() => {
+  // useEffect(() => {
 
 
 
-    // console.log('start  ' + timer);
-    if (type == 'short break') {
-      setMinutes(0);
-      setSeconds(4);
-      // console.log('short break  ' + timer);
-      setModalstate(false);
-      setBgColor('#4C9195')
-      setCountDownColor('#5E9CA1')
-      start()
+  //   // console.log('start  ' + timer);
+  //   if (type == 'short break') {
+  //     setMinutes(0);
+  //     setSeconds(4);
+  //     // console.log('short break  ' + timer);
+  //     setModalstate(false);
+  //     setBgColor('#4C9195')
+  //     setCountDownColor('#5E9CA1')
+  //     start()
 
-    } else if (type == 'long break') {
-      setMinutes(0);
-      setSeconds(4);
-      setModalstate(false);
-      setBgColor('#457CA3')
-      setCountDownColor('#5889AC')
-      start();
-    } else {
-      setCountpmodoro(countpmodoro + 1);
-      setModalstate(false);
-      setMinutes(0);
-      setSeconds(6);
-      setBgColor('#D95550')
-      setCountDownColor('#DD6662')
-      // console.log('pomodoro  ' + timer);
+  //   } else if (type == 'long break') {
+  //     setMinutes(0);
+  //     setSeconds(4);
+  //     setModalstate(false);
+  //     setBgColor('#457CA3')
+  //     setCountDownColor('#5889AC')
+  //     start();
+  //   } else {
+  //     setCountpmodoro(countpmodoro + 1);
+  //     setModalstate(false);
+  //     setMinutes(0);
+  //     setSeconds(6);
+  //     setBgColor('#D95550')
+  //     setCountDownColor('#DD6662')
+  //     // console.log('pomodoro  ' + timer);
 
-    }
+  //   }
 
-  }, [type])
+  // }, [type])
 
 
   useEffect(() => {
@@ -110,7 +110,7 @@ const CountDown = ({bgColor, setBgColor, countDownColor,  setCountDownColor,coun
   }, [timer, seconds]);
 
  const toBreak=()=>{
-  if(standarCountPomodoro/countpmodoro==1){
+  if(countpmodoro%standarCountPomodoro==0 && countpmodoro!=0){
     setMinutes(0);
       setSeconds(10);
       setBgColor('#457CA3')
@@ -118,7 +118,7 @@ const CountDown = ({bgColor, setBgColor, countDownColor,  setCountDownColor,coun
       setTextColor('text-txt-long-blue')
       setFocusColor('#4B7593')
       setFocusOrBreak('Time for a break!')
-      setCountpmodoro(1)
+      setCountpmodoro(countpmodoro+1)
       
   }
   else if(countDownColor=='#DD6662'){
@@ -157,7 +157,7 @@ const CountDown = ({bgColor, setBgColor, countDownColor,  setCountDownColor,coun
  }
 
   function choice(a) {
-    setType(a);
+    // setType(a);
 
   }
 
